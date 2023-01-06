@@ -1,0 +1,31 @@
+.header {
+  padding-block: 30px;
+  background-color: silver;
+
+  .nav-toggler {
+    margin-left: auto;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: calc(100% + 20px);
+    margin-inline: -10px;
+  }
+
+  &__col {
+    padding-inline: 10px;
+
+    &--2 {
+      flex: 0 0 16.66666%;
+    }
+
+    &--5 {
+      flex: 0 0 41.66666%;
+    }
+    &--12 {
+      flex: 0 0 100%;
+    }
+  }
+}

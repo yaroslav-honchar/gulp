@@ -1,0 +1,47 @@
+{% import "macro/nav.html" as nav %}
+
+<header class="header js-header">
+  <div class="container">
+    <div class="header__row">
+
+      <div class="header__col header__col--2">
+        {{nav.HeaderLogo('/')}}
+      </div>
+
+      <div class="header__col header__col--8">
+        {{ nav.Navigation([
+          {
+            'title': 'Home',
+            'url': '/'
+          },
+          {
+            'title': 'Projects',
+            'url': './projects.html'
+          },
+          {
+            'title': 'About',
+            'url': './about.html'
+          }
+        ]) 
+      }}
+      </div>
+
+      <div class="header__col header__col--2">
+        {{nav.NavToggler('')}}
+      </div>
+      <div class="header__col header__col--12">
+        {{ nav.Breadcrumbs([
+            {
+              'title': 'Home',
+              'url': '/'
+            },
+            {
+              'title': 'Projects',
+              'url': './projects.html'
+            }
+          ]) 
+        }}
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,1 @@
+{"version":3,"file":"main.js","mappings":";;;;;AAAAA,MAAM,CAACC,gBAAgB,CAAC,MAAM,EAAE,MAAM,CACtC,CAAC,CAAC,C","sources":["webpack://gulp-builder/./src/js/index.js"],"sourcesContent":["window.addEventListener('load', () => {\n});\n"],"names":["window","addEventListener"],"sourceRoot":""}

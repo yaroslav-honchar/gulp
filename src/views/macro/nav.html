@@ -1,0 +1,45 @@
+{% macro HeaderLogo(url) %}
+  <a href="{{url}}" class="header-logo">Logo</a>
+{% endmacro %}
+
+{% macro Navigation(data) %}
+  <div class="navbar js-navbar">
+    <nav class="navbar__wrap">
+      <ul class="navbar__list">
+
+        {% for item in data %}
+          <li class="navbar__item">
+            <a href="{{ item.url }}" class="navbar__link">{{item.title}}</a>
+          </li>
+        {% endfor %}
+
+      </ul>
+    </nav>
+  </div>
+{% endmacro %}
+
+{% macro NavToggler() %}
+  <button class="nav-toggler js-nav-toggler">
+    <span class="nav-toggler__icon"></span>
+    <span class="nav-toggler__icon"></span>
+    <span class="nav-toggler__icon"></span>
+  </button>
+{% endmacro %}
+
+{% macro Breadcrumbs(data) %}
+  <div class="breadcrumbs">
+    <ul class="breadcrumbs__list">
+
+      {% for item in data %}
+        <li class="breadcrumbs__item">
+          <a href="{{ item.url }}" 
+            class="breadcrumbs__link {{ 'disabled' if loop.index == data.length }}"
+            >
+            {{ item.title }}
+          </a>
+        </li>
+      {% endfor %}
+
+    </ul>
+  </div>
+{% endmacro %}

@@ -1,0 +1,71 @@
+$sm: 575.9px;
+$md: 767.9px;
+$lg: 991.9px;
+$xl: 1199.9px;
+$xxl: 1399.9px;
+
+@mixin media-down($value) {
+  @media screen and (max-width: ($value + 'px')) {
+    @content;
+  }
+}
+
+@mixin media-up($value) {
+  @media screen and (min-width: ($value + 'px')) {
+    @content;
+  }
+}
+
+@mixin media-between($value1, $value2) {
+  @media screen and (min-width: ($value1 + 'px')) and (max-width: ($value2 + 'px')) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-up($media) {
+  @if $media == sm {
+    @media (min-width: $sm) {
+      @content;
+    }
+  } @else if $media == md {
+    @media (min-width: $md) {
+      @content;
+    }
+  } @else if $media == lg {
+    @media (min-width: $lg) {
+      @content;
+    }
+  } @else if $media == xl {
+    @media (min-width: $xl) {
+      @content;
+    }
+  } @else if $media == xxl {
+    @media (min-width: $xxl) {
+      @content;
+    }
+  }
+}
+
+@mixin media-breakpoint-down($media) {
+  @if $media == sm {
+    @media (max-width: $sm) {
+      @content;
+    }
+  } @else if $media == md {
+    @media (max-width: $md) {
+      @content;
+    }
+  } @else if $media == lg {
+    @media (max-width: $lg) {
+      @content;
+    }
+  } @else if $media == xl {
+    @media (max-width: $xl) {
+      @content;
+    }
+  } @else if $media == xxl {
+    @media (max-width: $xxl) {
+      @content;
+    }
+  }
+}

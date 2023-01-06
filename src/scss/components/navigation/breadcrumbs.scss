@@ -1,0 +1,11 @@
+.breadcrumbs {
+  &__list {
+    display: flex;
+    align-items: center;
+    width: calc(100% + 20px);
+    margin-inline: -10px;
+  }
+  &__item {
+    padding-inline: 10px;
+  }
+}
