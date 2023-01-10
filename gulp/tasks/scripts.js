@@ -3,7 +3,7 @@ const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const webpackStream = require('webpack-stream');
 const browserSync = require('browser-sync');
-const { _src, prod, backend, _build } = require('../gulp.config')();
+const { _src, prod, backend, _dist } = require('../gulp.config')();
 
 const scripts = () => {
   return src(_src.jsIndex)
@@ -49,7 +49,7 @@ const scripts = () => {
       console.error('WEBPACK ERROR', err);
       this.emit('end');
     })
-    .pipe(dest(_build.js))
+    .pipe(dest(_dist.js))
     .pipe(browserSync.stream());
 };
 

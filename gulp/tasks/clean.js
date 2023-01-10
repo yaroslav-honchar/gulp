@@ -1,8 +1,8 @@
 const del = require('del');
-const { _build } = require('../gulp.config')();
+const { _dist } = require('../gulp.config')();
 
 const clean = () => {
-  return del([_build.root]);
+  return del([_dist.root]);
 };
 
 module.exports = clean;

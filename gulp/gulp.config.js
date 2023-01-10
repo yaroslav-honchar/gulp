@@ -36,7 +36,7 @@ module.exports = () => {
       resources: [`${source_root}/resources/**/*.*`],
     },
 
-    _build: {
+    _dist: {
       root: build_root,
       svg: `${build_root}/svg`,
       icons: `${build_root}/icons`,

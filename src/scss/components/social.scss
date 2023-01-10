@@ -1,0 +1,35 @@
+@import "../mixins/media";
+
+.socials {
+  &__list {
+    display: flex;
+    align-items: center;
+    width: calc(100% + 16px);
+    margin-inline: -8px;
+  }
+
+  &__item {
+    padding-inline: 8px;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s ease;
+
+    &:hover {
+      @include media-up(1025) {
+        border-color: var(--white);
+      }
+    }
+  }
+}

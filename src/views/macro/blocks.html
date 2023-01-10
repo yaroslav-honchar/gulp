@@ -1,0 +1,44 @@
+{% macro Dropdown(data) %}
+  <div class="dropdown" data-dropdown>
+    <div class="dropdown__header">
+      <button class="dropdown__trigger" data-dropdown-tigger type='button'>
+        {{ data.triggerInner }}
+      </button>
+    </div>
+    <div class="dropdown__body" data-dropdown-body>
+      <ul class="dropdown__list">
+
+        {% for item in data.list %}
+          <li class="dropdown__item">
+            {% if item.href %}
+              <a class="dropdown__link" 
+              href="{{item.href}}"
+              data-dropdown-link>
+                {{ item.value }}
+              </a>
+            {% else %}
+              <button class="dropdown__link" 
+                type="button" 
+                data-dropdown-link-value='{{ item.value }}'
+                data-dropdown-link
+                >
+                {{ item.value }}
+              </button>
+            {% endif %}
+          </li>
+        {% endfor %}
+
+      </ul>
+    </div>
+
+    {% if data.input %}
+      <input type="text" 
+        name='dropdown' 
+        class="dropdown__input" 
+        data-dropdown-input
+        data-required data-validation-type="empty"
+        value=''>
+    {% endif %}
+
+  </div>
+{% endmacro %}

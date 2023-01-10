@@ -3,16 +3,16 @@ const ifEnv = require('gulp-if-env');
 const image = require('gulp-imagemin');
 const avif = require('gulp-avif');
 const webp = require('gulp-webp');
-const { _src, _build, prod } = require('../gulp.config')();
+const { _src, _dist, prod } = require('../gulp.config')();
 
 const images = () => {
   // Webp
   src([_src.images])
     .pipe(webp({ quality: 90 }))
-    .pipe(dest(_build.images));
+    .pipe(dest(_dist.images));
 
   // Avif
-  src([_src.images]).pipe(avif()).pipe(dest(_build.images));
+  src([_src.images]).pipe(avif()).pipe(dest(_dist.images));
 
   // Image quality
   return src([_src.images])
@@ -30,7 +30,7 @@ const images = () => {
         ])
       )
     )
-    .pipe(dest(_build.images));
+    .pipe(dest(_dist.images));
 };
 
 module.exports = images;

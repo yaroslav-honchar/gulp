@@ -73,6 +73,7 @@
     "@popperjs/core": "^2.11.2",
     "aos": "^2.3.4",
     "bootstrap": "^5.2.0",
+    "flatpickr": "^4.6.13",
     "imask": "^6.4.3",
     "inputmask": "^5.0.7",
     "just-validate": "^3.3.3",

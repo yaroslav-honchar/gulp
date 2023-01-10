@@ -1,0 +1,8 @@
+{% macro BtnPL(inner, class, attr) %}
+  <button
+        class="btn btn-transparent btn-transparent--white {{ class }}"
+        {{attr}}
+      >
+    <span class="btn__inner">{{ inner }}</span>
+  </button>
+{% endmacro %}

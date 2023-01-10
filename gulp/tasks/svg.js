@@ -3,10 +3,10 @@ const svgmin = require('gulp-svgmin');
 const cheerio = require('gulp-cheerio');
 const replace = require('gulp-replace');
 const svgSprite = require('gulp-svg-sprite');
-const { _src, _build, prod } = require('../gulp.config')();
+const { _src, _dist, prod } = require('../gulp.config')();
 
 const svg = () => {
-  src(_src.svg).pipe(svgmin()).pipe(dest(_build.svg));
+  src(_src.svg).pipe(svgmin()).pipe(dest(_dist.svg));
   return src(_src.icons)
     .pipe(
       svgmin({
@@ -38,7 +38,7 @@ const svg = () => {
         },
       })
     )
-    .pipe(dest(_build.icons));
+    .pipe(dest(_dist.icons));
 };
 
 module.exports = svg;

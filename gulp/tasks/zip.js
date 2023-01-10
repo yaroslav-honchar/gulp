@@ -5,11 +5,11 @@ const rootFolder = path.basename(path.resolve());
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const zip = require('gulp-zip');
-const { _build, _src } = require('../gulp.config')();
+const { _dist, _src } = require('../gulp.config')();
 
 const zipFiles = () => {
-  del.sync([`${_build.root}/*.zip`]);
-  src(`${_build.root}/**/*.*`, {})
+  del.sync([`${_dist.root}/*.zip`]);
+  src(`${_dist.root}/**/*.*`, {})
     .pipe(
       plumber(
         notify.onError({
@@ -19,7 +19,7 @@ const zipFiles = () => {
       )
     )
     .pipe(zip(`${rootFolder}-build.zip`))
-    .pipe(dest(_build.root));
+    .pipe(dest(_dist.root));
   return src(`${_src.root}/**/*.*`, {})
     .pipe(
       plumber(
@@ -30,7 +30,7 @@ const zipFiles = () => {
       )
     )
     .pipe(zip(`${rootFolder}-source.zip`))
-    .pipe(dest(_build.root));
+    .pipe(dest(_dist.root));
 };
 
 module.exports = zipFiles;

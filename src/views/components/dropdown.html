@@ -1,0 +1,16 @@
+{% import "macro/blocks.html" as blocks %}
+{% set dropdown = {
+  'triggerInner': 'Dropdown value',
+  'input': true,
+  'list': [
+    {
+      'value': 'Dropdown item 1'
+    }, {
+      'value': 'Dropdown item 2'
+    }, {
+      'value': 'Dropdown item 3'
+    }
+  ]
+} %}
+
+{{ blocks.Dropdown(dropdown) }}

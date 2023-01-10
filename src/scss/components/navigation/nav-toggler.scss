@@ -4,6 +4,10 @@
   height: 40px;
   position: relative;
 
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+
   &:hover {
     .nav-toggler__icon {
       &:nth-child(1),

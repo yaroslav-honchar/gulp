@@ -6,7 +6,7 @@ const ifEnv = require('gulp-if-env');
 const browserSync = require('browser-sync');
 const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
-const { _src, _build, prod, backend } = require('../gulp.config')();
+const { _src, _dist, prod, backend } = require('../gulp.config')();
 
 const styles = () => {
   return src(_src.scss, { sourcemaps: !prod && !backend })
@@ -27,7 +27,7 @@ const styles = () => {
       })
     )
     .pipe(ifEnv('production', postcss()))
-    .pipe(dest(_build.css, !prod && !backend ? { sourcemaps: '.' } : ''))
+    .pipe(dest(_dist.css, !prod && !backend ? { sourcemaps: '.' } : ''))
     .pipe(browserSync.stream());
 };
 

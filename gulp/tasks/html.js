@@ -3,7 +3,7 @@ const htmlmin = require('gulp-htmlmin');
 const nunjucks = require('gulp-nunjucks-render');
 const notify = require('gulp-notify');
 const browserSync = require('browser-sync');
-const { prod, backend, _src, _build } = require('../gulp.config')();
+const { prod, backend, _src, _dist } = require('../gulp.config')();
 
 const htmlHandle = () => {
   return src(
@@ -36,7 +36,7 @@ const htmlHandle = () => {
         collapseWhitespace: prod,
       })
     )
-    .pipe(dest(backend ? `${_build.root}/views` : _build.root))
+    .pipe(dest(backend ? `${_dist.root}/views` : _dist.root))
     .pipe(browserSync.stream());
 };
 

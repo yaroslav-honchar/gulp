@@ -1,5 +1,5 @@
 {% macro HeaderLogo(url) %}
-  <a href="{{url}}" class="header-logo">Logo</a>
+  <a href="{{url}}" class="logo">Logo</a>
 {% endmacro %}
 
 {% macro Navigation(data) %}
@@ -24,6 +24,37 @@
     <span class="nav-toggler__icon"></span>
     <span class="nav-toggler__icon"></span>
   </button>
+{% endmacro %}
+
+{% macro langDropdown(args) %}
+  <div class="dropdown">
+    <button
+          class="dropdown__toggler"
+          aria-label="Toggle open language list"
+        >
+          En
+        </button>
+    <div class="dropdown__list-wrap">
+      <ul class="dropdown__list">
+        <li class="dropdown__item">
+          <button
+                class="dropdown__btn"
+                aria-label="Change language to English"
+              >
+                English
+              </button>
+        </li>
+        <li class="dropdown__item">
+          <button
+                class="dropdown__btn"
+                aria-label="Change language to Ukraine"
+              >
+                Ua
+              </button>
+        </li>
+      </ul>
+    </div>
+  </div>
 {% endmacro %}
 
 {% macro Breadcrumbs(data) %}

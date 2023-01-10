@@ -14,12 +14,22 @@ task('watch', require('./gulp/tasks/watch'));
 task('clean', require('./gulp/tasks/clean'));
 task('sitemapWrite', require('./gulp/tasks/sitemap'));
 task('robotsWrite', require('./gulp/tasks/robots'));
+task('favicons', require('./gulp/tasks/favicons'));
 
 task(
   'build',
   series(
     'clean',
-    parallel('svg', 'fonts', 'html', 'scripts', 'styles', 'resources', 'images')
+    parallel(
+      'svg',
+      'fonts',
+      'html',
+      'scripts',
+      'styles',
+      'resources',
+      'images',
+      'favicons'
+    )
   )
 );
 // task('prod', series('build'));

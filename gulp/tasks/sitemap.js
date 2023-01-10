@@ -1,9 +1,9 @@
 const { src, dest } = require('gulp');
 const sitemap = require('gulp-sitemap');
-const { sitemapConfigs, _build } = require('../gulp.config')();
+const { sitemapConfigs, _dist } = require('../gulp.config')();
 
 const sitemapWrite = () => {
-  return src(`${_build.root}/*.html`, {
+  return src(`${_dist.root}/*.html`, {
     read: false,
   })
     .pipe(sitemap(sitemapConfigs))

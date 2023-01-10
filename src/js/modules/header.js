@@ -1,4 +1,4 @@
-import { refs } from './refs';
+import { refs } from '../refs';
 const { header, headerHideClass, headerBackgroundClass } = refs;
 let scrollPosition = Number.NEGATIVE_INFINITY;
 
