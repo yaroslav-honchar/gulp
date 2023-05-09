@@ -14,7 +14,7 @@ task('watch', require('./gulp/tasks/watch'));
 task('clean', require('./gulp/tasks/clean'));
 task('sitemapWrite', require('./gulp/tasks/sitemap'));
 task('robotsWrite', require('./gulp/tasks/robots'));
-task('favicons', require('./gulp/tasks/favicons'));
+// task('favicon', require('./gulp/tasks/favicon'));
 
 task(
   'build',
@@ -28,7 +28,7 @@ task(
       'styles',
       'resources',
       'images',
-      'favicons'
+      // 'favicon'
     )
   )
 );

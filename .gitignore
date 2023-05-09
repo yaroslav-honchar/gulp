@@ -2,4 +2,5 @@
 /app
 package-lock.json
 /.idea
+/.vscode
 ./**/*.zip

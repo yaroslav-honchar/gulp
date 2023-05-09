@@ -1,0 +1,18 @@
+{% macro icon(name, class = '') %}
+  <svg class="icon icon-{{ name }} {{ class }}">
+    <use href="./icons/sprite.svg#{{ name }}" />
+  </svg>
+{% endmacro %}
+
+{% macro img(src, format, parent) %}
+  <picture>
+    <source
+      class="{{ parent }}__img" srcset="img/{{ src }}.avif" type="image/avif" />
+    <source
+      class="{{ parent }}__img"
+      srcset="img/{{ src }}.webp"
+      type="image/webp"
+    />
+    <img class="{{ parent }}__img" src="img/{{ src }}.{{ format }}" alt="picture" />
+  </picture>
+{% endmacro %}

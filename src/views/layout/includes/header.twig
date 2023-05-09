@@ -1,0 +1,15 @@
+{% set nav = json('nav') %}
+
+<header class="header js-header">
+  <div class="container">
+    <nav class='nav'>
+      <ul class='nav__list'>
+        {% for item in nav %}
+          <li class='nav__item'>
+            <a class='nav__link' href='{{ item.href }}'>{{ item.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

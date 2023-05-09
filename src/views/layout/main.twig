@@ -1,0 +1,17 @@
+{% import '../macro/media.twig' as media %}
+{% import '../macro/buttons.twig' as btn %}
+{% block variables %}{% endblock %}
+
+<!Doctype html>
+<html lang='en'>
+{% include 'includes/head.twig' %}
+<body class='{{ bodyClass }}'>
+<div class='wrapper'>
+  {% include 'includes/header.twig' %}
+  <div class='content'>
+    {% block content %}{% endblock %}
+  </div>
+  {% include 'includes/footer.twig' %}
+</div>
+</body>
+</html>

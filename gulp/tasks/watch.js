@@ -12,7 +12,8 @@ const watchHandle = () => {
 
   watch(`${_src.root}/scss/**/*.scss`, series('styles'));
   watch(_src.jsDir, series('scripts'));
-  watch(`${_src.root}/views/**/*.html`, series('html'));
+  watch(`${_src.root}/views/**/*.twig`, series('html'));
+  watch(`${_src.root}/json/**/*.json`, series('html'));
   watch(_src.resources, series('resources'));
   watch(_src.images, series('images'));
   watch(_src.svg, series('svg'));
