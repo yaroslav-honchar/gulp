@@ -1,12 +1,27 @@
 const { src, dest } = require('gulp');
 const htmlmin = require('gulp-htmlmin');
 const twig = require('gulp-twig');
+const data = require('gulp-data');
 const notify = require('gulp-notify');
 const browserSync = require('browser-sync');
 const path = require('path');
 const { prod, backend, _src, _dist } = require('../gulp.config')();
 
 const htmlHandle = () => {
+  const getCurrentPage = ({ path: filePath }) => {
+    const fileBaseName = path.basename(filePath);
+    const extNameRegExp = new RegExp(path.extname(filePath));
+    const currentPage = fileBaseName.replace(extNameRegExp, '');
+
+    return currentPage;
+  };
+
+  const throwData = (data) => {
+    const currentPage = getCurrentPage(data);
+
+    return { currentPage, prod, backend };
+  };
+
   const functions = [
     {
       name: 'join',
@@ -28,6 +43,7 @@ const htmlHandle = () => {
   ];
 
   return src([`${_src.views}/pages/*.twig`, `${_src.views}/index/*.twig`, `${_src.views}/errors/*.twig`])
+    .pipe(data(throwData))
     .pipe(
       twig({ functions }),
     )
@@ -45,7 +61,7 @@ const htmlHandle = () => {
         collapseWhitespace: prod,
       }),
     )
-    .pipe(dest(backend ? `${_dist.root}/views` : _dist.root))
+    .pipe(dest(_dist.root))
     .pipe(browserSync.stream());
 };
 

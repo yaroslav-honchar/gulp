@@ -1,14 +1,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link
-    rel="shortcut icon"
-    href="{{ path }}/favicons/favicon.png"
-    type="image/x-icon"
-  />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="theme-color" content="#111111" />
   <title>{{ title }}</title>
-  <link rel="stylesheet" href="css/main.css" />
-  <script defer src="js/main.js"></script>
+
+  <link rel="shortcut icon" href="favicons/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicons/favicon.png" type="image/x-icon" />
+
+  {% if prod == true %}
+    <link rel="stylesheet" href="css/styles.min.css" />
+    <script defer src="js/scripts.min.js"></script>
+  {% else %}
+    <link rel="stylesheet" href="css/styles.css" />
+    <script defer src="js/scripts.js"></script>
+  {% endif %}
 </head>

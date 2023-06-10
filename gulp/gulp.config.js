@@ -28,6 +28,7 @@ module.exports = () => {
       views: `${source_root}/views/`,
       svg: `${source_root}/svg/**/*.svg`,
       icons: `${source_root}/icons/**/*.svg`,
+      favicon: `${source_root}/favicon/favicon.png`,
       images: `${source_root}/img/**/*.{jpg,jpeg,png}`,
       scss: `${source_root}/scss/main.scss`,
       jsDir: `${source_root}/js/**/*.js`,

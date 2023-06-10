@@ -16,34 +16,7 @@ const scripts = () => {
       )
     )
     .pipe(
-      webpackStream({
-        mode: prod ? 'production' : 'development',
-        output: {
-          filename: 'main.js',
-        },
-        module: {
-          rules: [
-            {
-              test: /\.m?js$/,
-              exclude: /node_modules/,
-              use: {
-                loader: 'babel-loader',
-                options: {
-                  presets: [
-                    [
-                      '@babel/preset-env',
-                      {
-                        targets: 'defaults',
-                      },
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-        },
-        devtool: !prod && !backend ? 'source-map' : false,
-      })
+      webpackStream(require('../../webpack.config'))
     )
     .on('error', function (err) {
       console.error('WEBPACK ERROR', err);

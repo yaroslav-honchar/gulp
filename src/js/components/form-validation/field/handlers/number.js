@@ -1,0 +1,4 @@
+const number = () => {
+};
+
+export { number };

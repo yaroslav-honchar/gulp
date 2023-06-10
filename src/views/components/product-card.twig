@@ -1,0 +1,19 @@
+<article class='product-card {{ class }}'>
+  <div class='product-card__picture'>
+    <ul class='product-card__tags'>
+      {% for tag in tag %}
+        <li class='product-card__tag {{ toLoserCase(tag) }}'>{{ tag }}</li>
+      {% endfor %}
+    </ul>
+    {{ media.img(img.src, img.format, 'product-card') }}
+  </div>
+  <div class='product-card__content'>
+    <div class='product-card__content-head'>
+      <span class='product-card__title'>{{ title }}</span>
+      <span class='product-card__price'>{{ price }}</span>
+    </div>
+    <div class='product-card__descr'>
+      <p>{{ descr }}</p>
+    </div>
+  </div>
+</article>

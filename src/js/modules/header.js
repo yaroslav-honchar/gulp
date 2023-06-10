@@ -1,18 +1,34 @@
-import { refs } from '../refs';
-const { header, headerHideClass, headerBackgroundClass } = refs;
-let scrollPosition = Number.NEGATIVE_INFINITY;
+const header = () => {
+  const $header = document.querySelector('.header');
+  if (!$header) return;
 
-const hideHeader = () => {
-  const { pageYOffset } = window;
-  pageYOffset > scrollPosition
-    ? header.classList.add(headerHideClass)
-    : header.classList.remove(headerHideClass);
-  scrollPosition = pageYOffset;
+  // ===== System variables
+  let currentScrollPosition = 0;
+
+  // ===== Methods
+  function setCssVars() {
+    document.documentElement.style.setProperty('--header-height', `${$header.offsetHeight}px`);
+  }
+
+  function scrollHandle() {
+    if (window.scrollY < currentScrollPosition || window.scrollY < $header.offsetHeight) {
+      $header.classList.remove('hide');
+    } else {
+      $header.classList.add('hide');
+    }
+
+    currentScrollPosition = window.scrollY;
+  }
+
+  // ===== Init
+  setCssVars();
+  scrollHandle();
+
+  return {
+    $header,
+    scrollHandle,
+    setCssVars
+  };
 };
 
-const changeBackground = () =>
-  window.pageYOffset > 10
-    ? header.classList.add(headerBackgroundClass)
-    : header.classList.remove(headerBackgroundClass);
-
-export { hideHeader, changeBackground };
+export { header };

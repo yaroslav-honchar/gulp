@@ -1,0 +1,12 @@
+{% set products = json('products') %}
+
+<div class='sc-product-list'>
+  <div class='sc-product-list__title'>Products</div>
+  <div class='sc-product-list__row'>
+    {% for product in products %}
+      <div class='sc-product-list__col'>
+        {% include '../components/product-card.twig' with product %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,29 +1,67 @@
+// Libs
+@import "libs";
+
 // Vars
-@import 'vars/main';
+@import "vars/index";
 
 // Utils
-@import 'mixins/main';
+@import "mixins/index";
 
 // Fonts
-@import 'fonts';
+@import "fonts";
 
 // Reboot
-@import 'rebot';
-
-// Libs
-@import 'libs';
+@import "rebot";
 
 // Root
-@import 'root';
+@import "root";
 
 // Settings
-@import 'settings';
+@import "settings";
+
+// Helpers
+@import "helpers/index";
+
+// UI
+@import "ui/index";
 
 // Components
-@import 'components/main';
+@import "components/index";
 
 // Modules
-@import 'layout/main';
+@import "modules/index";
 
 // Pages
-@import 'views/main';
+@import "pages/index";
+
+.test-1 {
+  font-size: 1635px;
+
+  @include media-down(992) {
+    font-size: 1635px;
+  }
+}
+
+.test-2 {
+  font-size: 1635px;
+
+  @include media-down(1400) {
+    font-size: 1635px;
+  }
+}
+
+.test-3 {
+  font-size: 1635px;
+
+  @include media-down(645) {
+    font-size: 15px;
+  }
+}
+
+.test-4 {
+  font-size: 12px;
+
+  @include media-down(1200) {
+    font-size: 10px;
+  }
+}
