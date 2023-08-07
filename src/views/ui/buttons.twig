@@ -1,8 +1,21 @@
-{% macro BtnPL(inner, class, attr) %}
+{% macro primary(props) %}
   <button
-        class="btn btn-transparent btn-transparent--white {{ class }}"
-        {{attr}}
-      >
-    <span class="btn__inner">{{ inner }}</span>
+    class="btn primary-btn {{ props.class }}"
+    aria-label="{{ props.inner }}"
+    {{ props.attr }}
+  >
+    <span class="btn__inner primary-btn__inner">{{ props.inner }}</span>
+    <span class="btn__bg primary-btn__bg"></span>
+  </button>
+{% endmacro %}
+
+{% macro secondary(props) %}
+  <button
+    class="btn secondary-btn {{ props.class }}"
+    aria-label="{{ props.inner }}"
+    {{ props.attr }}
+  >
+    <span class="btn__inner secondary-btn__inner">{{ props.inner }}</span>
+    <span class="btn__bg secondary-btn__bg"></span>
   </button>
 {% endmacro %}

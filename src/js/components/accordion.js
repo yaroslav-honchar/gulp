@@ -1,48 +1,100 @@
-import { slideUp, slideToggle } from '../utils/slideIn.js';
+import { slideUp, slideDown } from "../utils/slideIn.js"
 
 const accordion = () => {
-  const accordions = document.querySelectorAll('.js-accordion');
-  if (!accordions.length) return;
+  const accordions = document.querySelectorAll(".js-accordion")
+  if (!accordions.length) return []
 
   // System variables
-  let isLocked = false;
-  const duration = 500;
+  const duration = 500
+  const accordions_int = []
 
   // Methods
-  const clickHandle = ({ target, currentTarget }, items) => {
-    const clickedButton = target.classList.contains('js-accordion-toggler') || target.closest('js-accordion-toggler');
-    if (!clickedButton || isLocked) return;
+  function accordionOpen() {
+    this.$item.classList.add("active")
 
-    isLocked = true;
+    slideDown(this.$content, this.accordion.duration, () => {
+      this.accordion.isLocked = false
+      this.isOpen = true
+    })
+  }
 
-    const $currentItem = target.closest('.js-accordion-item');
-    const $currentContent = $currentItem.querySelector('.js-accordion-content');
+  function accordionClose() {
+    this.$item.classList.remove("active")
 
-    if (currentTarget.dataset?.type === 'single') {
-      items.forEach(($item) => {
-        const $content = $item.querySelector('.js-accordion-content');
+    slideUp(this.$content, this.accordion.duration, () => {
+      this.accordion.isLocked = false
+      this.isOpen = false
+    })
+  }
 
-        if ($currentContent !== $content) {
-          slideUp($content, duration);
-          $item.classList.remove('active');
+  function accordionToggle() {
+    if (this.accordion.isLocked) return
+
+    this.accordion.isLocked = true
+
+    if (this.accordion.isSingleItemOpen) {
+      this.accordion.items.forEach((item) => {
+        if (item.isOpen && item !== this) {
+          item.close()
         }
-      });
+      })
     }
 
-    $currentItem.classList.toggle('active');
-    slideToggle($currentContent, duration, () => {
-      isLocked = false;
-    });
-  };
+    if (this.isOpen) {
+      this.close()
+    } else {
+      this.open()
+    }
+  }
 
-  const init = ($accordion) => {
-    const items = $accordion.querySelectorAll('.js-accordion-item');
+  const init = ($accordion, index) => {
+    const items = $accordion.querySelectorAll(".js-accordion-item")
+    if (!items.length) return
 
-    $accordion.addEventListener('click', (event) => clickHandle(event, items));
-  };
+    const accordion = {}
+
+    $accordion.id = $accordion.id || `accordion_${index}`
+    accordion.id = $accordion.id
+    accordion.$accordion = $accordion
+    accordion.items = []
+    accordion.isSingleItemOpen = $accordion.dataset?.type === "single"
+    accordion.isLocked = false
+    accordion.duration = $accordion.dataset?.duration || duration
+
+    items.forEach(($item) => {
+      const item = {}
+
+      if ($item.id) {
+        item.id = $item.id
+      }
+
+      item.accordion = accordion
+      item.$item = $item
+      item.$toggler = $item.querySelector(".js-accordion-toggler")
+      item.$content = $item.querySelector(".js-accordion-content")
+      item.isOpen = window.getComputedStyle(item.$content).display !== "none"
+      item.open = accordionOpen.bind(item)
+      item.close = accordionClose.bind(item)
+      item.toggle = accordionToggle.bind(item)
+
+      if (item.isOpen) {
+        item.$item.classList.add("active")
+      } else {
+        item.$item.classList.remove("active")
+      }
+
+      item.$toggler.onclick = item.toggle
+
+      accordion.items.push(item)
+    })
+
+    accordions_int.push(accordion)
+  }
 
   // init
-  accordions.forEach(init);
-};
+  accordions.forEach(init)
 
-export { accordion };
+  return accordions_int
+}
+
+export { accordion }

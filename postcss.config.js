@@ -10,7 +10,6 @@ module.exports = {
         }
       ]
     }),
-    require('postcss-csso'),
     require('postcss-combine-media-query'),
     require('postcss-sort-media-queries'),
     require('postcss-short'),

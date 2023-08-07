@@ -1,17 +1,17 @@
-{% import '../ui/media.twig' as media %}
-{% import '../ui/buttons.twig' as btn %}
+{% import 'ui/media.twig' as media %}
+{% import 'ui/buttons.twig' as btn %}
 {% block variables %}{% endblock %}
 
 <!Doctype html>
 <html lang='en'>
-{% include 'includes/head.twig' %}
+{% include 'layout/modules/head.twig' %}
 <body class='{{ bodyClass }}'>
 <div class='wrapper'>
-  {% include 'includes/header.twig' %}
+  {% include 'layout/modules/header.twig' %}
   <div class='content'>
     {% block content %}{% endblock %}
   </div>
-  {% include 'includes/footer.twig' %}
+  {% include 'layout/modules/footer.twig' %}
 </div>
 </body>
 </html>

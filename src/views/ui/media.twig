@@ -4,15 +4,13 @@
   </svg>
 {% endmacro %}
 
-{% macro img(src, format, parent) %}
+{% macro img(src, format, parent, width, height) %}
   <picture>
-    <source
-      class="{{ parent }}__img" srcset="img/{{ src }}.avif" type="image/avif" />
     <source
       class="{{ parent }}__img"
       srcset="img/{{ src }}.webp"
       type="image/webp"
     />
-    <img class="{{ parent }}__img" src="img/{{ src }}.{{ format }}" alt="picture" />
+    <img class="{{ parent }}__img" src="img/{{ src }}.{{ format }}" alt="picture" width="{{ width }}" height="{{ height }}" />
   </picture>
 {% endmacro %}

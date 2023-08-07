@@ -1,15 +1,19 @@
-import { initForm } from './form/init-form';
+import { initForm } from "./form/init-form"
 
-const formValidation = () => {
-  const forms = document.querySelectorAll('.js-form');
-  if (!forms.length) return;
+const formValidation = (props) => {
+  const forms = document.querySelectorAll(".js-form")
+  if (!forms.length) return []
 
-  const forms_init = {};
+  const forms_init = []
 
-  // Init
-  forms.forEach(($form, index, arr) => initForm(forms_init, $form, index, arr));
+  // === Initialisation
+  forms.forEach((...args) => {
+    const from = initForm(...args, props)
 
-  return forms_init;
-};
+    forms_init.push(from)
+  })
 
-export { formValidation };
+  return forms_init
+}
+
+export { formValidation }

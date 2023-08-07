@@ -1,0 +1,3 @@
+const number = () => {}
+
+export { number }

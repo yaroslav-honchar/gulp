@@ -1,4 +1,0 @@
-const number = () => {
-};
-
-export { number };
