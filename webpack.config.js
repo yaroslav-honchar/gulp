@@ -1,8 +1,6 @@
-const { prod, backend } = require("./gulp/gulp.config")()
-
 module.exports = {
   entry: ["@babel/polyfill", "./src/js/index.js"],
-  devtool: !prod && !backend ? "source-map" : false,
+  devtool: !prod ? "source-map" : false,
   mode: prod ? "production" : "development",
   output: {
     filename: prod ? "scripts.min.js" : "scripts.js"

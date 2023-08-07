@@ -1,8 +1,8 @@
-const del = require('del');
-const { _dist } = require('../gulp.config')();
+const { task } = require("gulp")
+const del = require("del")
 
-const clean = () => {
-  return del([_dist.root]);
-};
+const clean = () => del(["./build"])
 
-module.exports = clean;
+module.exports = () => {
+  task("clean", clean)
+}

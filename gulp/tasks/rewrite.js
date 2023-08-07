@@ -1,24 +1,25 @@
-const { readFileSync } = require('fs');
-const { src, dest } = require('gulp');
+const fs = require('fs');
+const { src, dest, task } = require('gulp');
 const revRewrite = require('gulp-rev-rewrite');
-const { _dist } = require('../gulp.config')();
 
 const rewrite = () => {
-  const manifest = readFileSync('build/rev.json');
-  src(`${_dist.css}/*.css`)
+  const manifest = fs.readFileSync('build/rev.json');
+
+  src("./build/css/*.css")
     .pipe(
       revRewrite({
         manifest,
       })
     )
-    .pipe(dest(_dist.css));
-  return src(`${_dist.root}/**/*.html`)
+    .pipe(dest("./build/css"));
+
+  return src("./build/**/*.html")
     .pipe(
       revRewrite({
         manifest,
       })
     )
-    .pipe(dest(_dist.root));
+    .pipe(dest("./build"));
 };
 
-module.exports = rewrite;
+module.exports = () => task("rewrite", rewrite);

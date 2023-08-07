@@ -1,12 +1,11 @@
-const { src, dest } = require('gulp');
-const { _src, _dist } = require('../gulp.config')();
-const ico = require('gulp-to-ico');
+const { src, dest, task } = require("gulp")
+const ico = require("gulp-to-ico")
 
-const favicon = () => {
-  return src(_src.favicon)
-    .pipe(dest(_dist.root + '/favicons'))
-    .pipe(ico('favicon.ico'))
-    .pipe(dest(_dist.root + '/favicons'));
-};
+const favicon = () => src("./src/favicon/favicon.png")
+  .pipe(dest("./build/favicons"))
+  .pipe(ico("favicon.ico"))
+  .pipe(dest("./build/favicons"))
 
-module.exports = favicon;
+module.exports = () => {
+  task("favicon", favicon)
+}

@@ -1,24 +1,23 @@
-const { watch, series } = require('gulp');
-const browserSync = require('browser-sync');
-const { _src, _dist } = require('../gulp.config')();
+const { watch, series, task } = require("gulp")
+const browserSync = require("browser-sync")
 
 const watchHandle = () => {
   browserSync.init({
     server: {
-      baseDir: `${_dist.root}`,
+      baseDir: "./build"
     },
-    port: 3010,
-  });
+    port: 3010
+  })
 
-  watch(`${_src.root}/scss/**/*.scss`, series('styles'));
-  watch(_src.jsDir, series('scripts'));
-  watch(`${_src.root}/views/**/*.twig`, series('html'));
-  watch(`${_src.root}/json/**/*.json`, series('html'));
-  watch(_src.resources, series('resources'));
-  watch(_src.images, series('images'));
-  watch(_src.svg, series('svg'));
-  watch(_src.icons, series('svg'));
-};
+  watch("./src/scss/**/*.scss", series("styles"))
+  watch("./src/js/**/*.js", series("js"))
+  watch("./src/views/**/*.twig", series("twig"))
+  watch("./src/json/**/*.json", series("twig"))
+  watch("./src/img/**.*", series("images"))
+  watch("./src/svg/**.svg", series("svg:pictures"))
+  watch("./src/icons/**.svg", series("svg:icons"))
+}
 
-// task('watchHandle', watchHandle);
-module.exports = watchHandle;
+module.exports = () => {
+  task("watch", watchHandle)
+}

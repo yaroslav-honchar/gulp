@@ -1,36 +1,36 @@
-const { src, dest } = require('gulp');
-const ifEnv = require('gulp-if-env');
-const image = require('gulp-imagemin');
-const avif = require('gulp-avif');
-const webp = require('gulp-webp');
-const { _src, _dist, prod } = require('../gulp.config')();
+const { src, dest, task } = require("gulp")
+const ifEnv = require("gulp-if-env")
+const image = require("gulp-imagemin")
+const avif = require("gulp-avif")
+const webp = require("gulp-webp")
 
 const images = () => {
-  // Webp
-  src([_src.images])
+  src(`./src/img/**/*.${images_ext}`)
     .pipe(webp({ quality: 90 }))
-    .pipe(dest(_dist.images));
+    .pipe(dest("./build/img"))
 
-  // Avif
-  src([_src.images]).pipe(avif()).pipe(dest(_dist.images));
+  src(`./src/img/**/*.${images_ext}`)
+    .pipe(avif())
+    .pipe(dest("./build/img"))
 
-  // Image quality
-  return src([_src.images])
+  return src(`./src/img/**/*.${images_ext}`)
     .pipe(
       ifEnv(
-        'production',
+        "production",
         image([
           image.mozjpeg({
             quality: 80,
-            progressive: true,
+            progressive: true
           }),
           image.optipng({
-            optimizationLevel: 2,
-          }),
+            optimizationLevel: 2
+          })
         ])
       )
     )
-    .pipe(dest(_dist.images));
-};
+    .pipe(dest("./build/img"))
+}
 
-module.exports = images;
+module.exports = () => {
+  task("images", images)
+}

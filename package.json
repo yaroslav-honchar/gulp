@@ -1,4 +1,5 @@
 {
+  "author": "Honchar Yaroslav",
   "name": "gulp-builder",
   "version": "2.0.4",
   "description": "gulp-builder",
@@ -6,11 +7,11 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
-    "prod": "gulp prod --env=production",
-    "back": "gulp build --env=backend",
-    "cache": "gulp cache"
+    "prod": "gulp build --env=production",
+    "fonts": "gulp fonts:generate",
+    "zip": "gulp zip",
+    "hash": "gulp hash"
   },
-  "author": "Honchar Yaroslav",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.16.7",
@@ -62,12 +63,10 @@
     "gulp-typograf": "^4.0.3",
     "gulp-webp": "^4.0.1",
     "gulp-zip": "^5.1.0",
-    "handlebars-layouts": "^3.1.4",
+    "gulp-to-ico": "^1.0.0",
     "imagemagick": "^0.1.3",
-    "node-w3c-validator": "^2.0.1",
     "postcss": "^8.4.5",
     "postcss-combine-media-query": "^1.0.1",
-    "postcss-csso": "^6.0.1",
     "postcss-scss": "^4.0.2",
     "postcss-short": "^5.0.0",
     "postcss-sort-media-queries": "^4.3.0",
@@ -81,19 +80,6 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "@popperjs/core": "^2.11.2",
-    "aos": "^2.3.4",
-    "bootstrap": "^5.2.0",
-    "flatpickr": "^4.6.13",
-    "gulp-to-ico": "^1.0.0",
-    "imask": "^6.4.3",
-    "inputmask": "^5.0.7",
-    "just-validate": "^3.3.3",
-    "rellax": "^1.12.1",
-    "simplebar": "^5.3.6",
-    "smooth-scroll": "^16.1.3",
-    "swiped-events": "^1.1.6",
-    "swiper": "^7.4.1"
+    "@babel/polyfill": "^7.12.1"
   }
 }
